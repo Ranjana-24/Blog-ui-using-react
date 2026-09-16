@@ -7,13 +7,18 @@ import { FaArrowLeft } from "react-icons/fa";
 import { validateBlog } from "../Validation";
 import toast from "react-hot-toast";
 import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { blogSchema } from "../schemas/blogSchema";
+
 export default function CreateNewPage() {
-  const { register, handleSubmitt, formState: { errors } } = useForm();
+  const { register, handleSubmit, formState: { errors } } = useForm(
+  {resolver: zodResolver(blogSchema)}
+  );
   const { BlogsData, setBlogsData } = useContext(BlogContext);
   const [valErrors, setValErrors] = useState({});
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const onSubmit = (e) => {
     e.preventDefault();
 
     const formData = new FormData(e.target);
@@ -55,7 +60,7 @@ export default function CreateNewPage() {
       </Button>
     
       <form
-        onSubmit={handleSubmit}
+        onSubmit={onSubmit}
         className="mx-auto max-w-4xl rounded-2xl border 
         border-green-900 bg-green-100 p-8 shadow-lg "
       >
@@ -66,9 +71,10 @@ export default function CreateNewPage() {
 
           <input
             type="text"
+            {...register("title")}
             name="title"
             placeholder="Enter blog title"
-            required
+            //required
             className="w-full rounded-xl border border-green-900 p-3 outline-none focus:ring-2 focus:ring-green-500"
           /> 
           {valErrors.title && <p className="text-red-500 text-xs">{valErrors.title}</p>}
@@ -81,9 +87,10 @@ export default function CreateNewPage() {
 
           <input
             type="text"
+            {...register("image")}
             name="image"
             placeholder="Enter image URL"
-            required
+            //required
             className="w-full rounded-xl border border-green-900 p-3 outline-none focus:ring-2 focus:ring-green-500"
           />
           
@@ -96,8 +103,9 @@ export default function CreateNewPage() {
 
           <textarea
             name="content"
+            {...register("content")}
             placeholder="Write your blog content"
-            required
+            //required
             rows="6"
             className="w-full rounded-xl border border-green-900 p-3 outline-none focus:ring-2 focus:ring-green-500"
           />
@@ -111,9 +119,10 @@ export default function CreateNewPage() {
 
           <input
             type="text"
+            {...register("category")}
             name="category"
             placeholder="Enter category"
-            required
+            //required
             className="w-full rounded-xl border border-green-900 p-3 outline-none focus:ring-2 focus:ring-green-500"
           />
           {valErrors.category && <p className="text-red-500 text-xs">{valErrors.category}</p>}
@@ -126,8 +135,9 @@ export default function CreateNewPage() {
 
           <input
             type="date"
+            {...register("date")}
             name="date"
-            required
+            //required
             className="w-full rounded-xl border border-green-900 p-3 outline-none focus:ring-2 focus:ring-green-500"
           />
           {valErrors.date && <p className="text-red-500 text-xs">{valErrors.date}</p>}
@@ -140,9 +150,10 @@ export default function CreateNewPage() {
 
           <input
             type="text"
+            {...register("author")}
             name="author"
             placeholder="Enter author name"
-            required
+            // required
             className="w-full rounded-xl border border-green-900 p-3 outline-none focus:ring-2 focus:ring-green-500"
           />
           {valErrors.author && <p className="text-red-500 text-xs">{valErrors.author}</p>}
