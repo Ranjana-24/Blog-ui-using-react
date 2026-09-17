@@ -4,7 +4,7 @@ import { BlogContext } from "../context/BlogContext";
 import Button from "../ui/Button";
 import Navbar from "../components/Navbar";
 import { FaArrowLeft } from "react-icons/fa";
-import { validateBlog } from "../Validation";
+//import { validateBlog } from "../Validation";
 import toast from "react-hot-toast";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -15,34 +15,48 @@ export default function CreateNewPage() {
   {resolver: zodResolver(blogSchema)}
   );
   const { BlogsData, setBlogsData } = useContext(BlogContext);
-  const [valErrors, setValErrors] = useState({});
+  //const [valErrors, setValErrors] = useState({});
   const navigate = useNavigate();
+ 
+  // ----
+  //const onSubmit = (e) => {
+    //e.preventDefault();
+  //const formData = new FormData(e.target);
+  //   const onSubmit = (data) => {
+  //   const newBlog = {
+  //     id: Date.now(),
+  //     title: formData.get("title"),
+  //     image: formData.get("image"),
+  //     content: formData.get("content"),
+  //     category: formData.get("category"),
+  //     date: formData.get("date"),
+  //     author: formData.get("author"),
+  //   };
+  //   const valErrors = validateBlog(newBlog);
+  //   setValErrors(valErrors);
+  //   if (Object.keys(valErrors).length > 0) {
+  //     return;
+  //   }
+  //   const newBlogsData = [newBlog,...BlogsData];
 
-  const onSubmit = (e) => {
-    e.preventDefault();
-
-    const formData = new FormData(e.target);
-
+  //   setBlogsData(newBlogsData);
+  //   toast.success("Blog Created Successfully");
+  //   navigate("/");
+  // };
+  const onSubmit = (data) => {
     const newBlog = {
       id: Date.now(),
-      title: formData.get("title"),
-      image: formData.get("image"),
-      content: formData.get("content"),
-      category: formData.get("category"),
-      date: formData.get("date"),
-      author: formData.get("author"),
+      title: data.title,
+      image: data.image,
+      content: data.content,
+      category: data.category,
+      date: data.date,
+      author: data.author,
     };
-    const valErrors = validateBlog(newBlog);
-    setValErrors(valErrors);
-    if (Object.keys(valErrors).length > 0) {
-      return;
-    }
-    const newBlogsData = [newBlog,...BlogsData];
-
-    setBlogsData(newBlogsData);
-    toast.success("Blog Created Successfully");
-    navigate("/");
-  };
+    setBlogsData([newBlog, ...BlogsData]);
+   toast.success("Blog Created Successfully");
+  navigate("/");
+  }
 
   return (
     <>
@@ -60,7 +74,7 @@ export default function CreateNewPage() {
       </Button>
     
       <form
-        onSubmit={onSubmit}
+        onSubmit={handleSubmit(onSubmit)}
         className="mx-auto max-w-4xl rounded-2xl border 
         border-green-900 bg-green-100 p-8 shadow-lg "
       >
@@ -72,12 +86,12 @@ export default function CreateNewPage() {
           <input
             type="text"
             {...register("title")}
-            name="title"
+            //name="title"
             placeholder="Enter blog title"
             //required
             className="w-full rounded-xl border border-green-900 p-3 outline-none focus:ring-2 focus:ring-green-500"
           /> 
-          {valErrors.title && <p className="text-red-500 text-xs">{valErrors.title}</p>}
+          {errors.title && <p className="text-red-500 text-xs">{errors.title.message}</p>}
         </div>
 
         <div className="mb-5">
@@ -88,12 +102,13 @@ export default function CreateNewPage() {
           <input
             type="text"
             {...register("image")}
-            name="image"
+            //name="image"
             placeholder="Enter image URL"
             //required
-            className="w-full rounded-xl border border-green-900 p-3 outline-none focus:ring-2 focus:ring-green-500"
+            className="w-full rounded-xl border border-green-900 p-3 outline-none 
+            focus:ring-2 focus:ring-green-500"
           />
-          
+          {errors.image && <p className="text-red-500 text-xs">{errors.image.message}</p>}
         </div>
 
         <div className="mb-5">
@@ -102,14 +117,14 @@ export default function CreateNewPage() {
           </label>
 
           <textarea
-            name="content"
+            //name="content"
             {...register("content")}
             placeholder="Write your blog content"
             //required
             rows="6"
             className="w-full rounded-xl border border-green-900 p-3 outline-none focus:ring-2 focus:ring-green-500"
           />
-          {valErrors.content && <p className="text-red-500 text-xs">{valErrors.content}</p>}
+          {errors.content && <p className="text-red-500 text-xs">{errors.content.message}</p>}
         </div>
 
         <div className="mb-5">
@@ -125,7 +140,7 @@ export default function CreateNewPage() {
             //required
             className="w-full rounded-xl border border-green-900 p-3 outline-none focus:ring-2 focus:ring-green-500"
           />
-          {valErrors.category && <p className="text-red-500 text-xs">{valErrors.category}</p>}
+          {errors.category && <p className="text-red-500 text-xs">{errors.category.message}</p>}
         </div>
 
         <div className="mb-5">
@@ -140,7 +155,7 @@ export default function CreateNewPage() {
             //required
             className="w-full rounded-xl border border-green-900 p-3 outline-none focus:ring-2 focus:ring-green-500"
           />
-          {valErrors.date && <p className="text-red-500 text-xs">{valErrors.date}</p>}
+          {errors.date && <p className="text-red-500 text-xs">{errors.date.message}</p>}
         </div>
 
         <div className="mb-6">
@@ -156,7 +171,7 @@ export default function CreateNewPage() {
             // required
             className="w-full rounded-xl border border-green-900 p-3 outline-none focus:ring-2 focus:ring-green-500"
           />
-          {valErrors.author && <p className="text-red-500 text-xs">{valErrors.author}</p>}
+          {errors.author && <p className="text-red-500 text-xs">{errors.author.message}</p>}
         </div>
 
         <Button

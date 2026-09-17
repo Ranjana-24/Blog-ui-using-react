@@ -36,7 +36,7 @@ export default function BlogDetailedPage() {
     // cutom browsers dlt popup
     // confirm("Are you sure you want to delete this blog?");
     
-    const newBlogsData = BlogsData.filter((tightblog) => blog.id !== Number(id));
+    const newBlogsData = BlogsData.filter((blog) => blog.id !== Number(id));
     setBlogsData(newBlogsData);
     toast.success("Blog Deleted Successfully");
     navigate("/");
