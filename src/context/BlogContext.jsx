@@ -1,39 +1,3 @@
-// import { createContext, useState } from "react";
-// import BlogData from "../data/BlogData";
-
-// export const BlogContext = createContext();
-
-// export default function BlogContextProvider({ children }) {
-//   const [BlogsData, setBlogsData] = useState([]);
-//   const [skip, setSkip] = useState(0);
-
-//   const fetchBlog = async() => {
-//     const response = await fetch(`https://dummyjson.com/posts?limit=2&skip=${skip}`);
-//     const data = await response.json();
-
-//     const fettchedBlogs = data.posts.map((blog) => (
-//       <div>
-//       id: {blog.id}
-//       title: {blog.title}
-//       description: {blog.body}
-//       tag: {blog.tag}
-//       </div>
-//     ))
-
-//     setBlogsData((oldBlogs) => [
-//       ...oldBlogs,
-//       ...fettchedBlogs
-//     ]);
-//     setSkip((oldSkip) => oldSkip + 2);
-//   }
- 
-//   return (
-//     <BlogContext.Provider value={{ BlogsData, setBlogsData, fetchBlog }}>
-//       {children}
-//     </BlogContext.Provider>
-//   );
-// }
-
 import { createContext, useState, useEffect } from "react";
 
 export const BlogContext = createContext();
@@ -46,14 +10,13 @@ export default function BlogContextProvider({ children }) {
 const authors = ["John", "Sarah", "David", "Emma", "Alex"];
 
   const fetchBlog = async () => {
-       setLoading(true);
+      // setLoading(true);
   try{
     const response = await fetch(
       `https://dummyjson.com/posts?limit=3&skip=${skip}`);
     const data = await response.json();
      
     if(data.posts.length === 0){
-      setNoposts(true);
       return;
     }
     const fettchedBlogs = data.posts.map((blog, index) => {
@@ -69,14 +32,20 @@ const authors = ["John", "Sarah", "David", "Emma", "Alex"];
     ]);
 
     setSkip((oldSkip) => oldSkip + 3);
-  }finally{
-    setLoading(false);
   }
+  catch(error){
+      console.log(error);
+      setLoading(false);
+    }
+  //finally{
+  //   setLoading(false);
+  // }
 };
 
-useEffect(() => {
-  fetchBlog();
-}, []);
+
+// useEffect(() => {
+//   fetchBlog();
+// }, []);
   return (
     <BlogContext.Provider
       value={{
@@ -94,3 +63,5 @@ useEffect(() => {
 
 // Author:  "User " + blog.userId ,
       // Author: authors[index]
+
+

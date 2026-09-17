@@ -10,7 +10,6 @@ export default function Blog({ BlogsData, setBlogsData, fetchBlog, loading}) {
   const [selectedBlog, setSelectedBlog] = useState(BlogsData[0]);
   const [currentPage, setCurrentPage] = useState(1);
   
-
   const postsPerPage = 3;
   const startIndex = (currentPage - 1) * postsPerPage;
 
@@ -19,7 +18,7 @@ const currentBlogs = BlogsData.slice(
   startIndex + postsPerPage
 );
 const totalPages = Math.ceil(BlogsData.length / postsPerPage);
-
+//throw new err ("testing err boundary");
   return (
     <>
       <hr className="border border-gray-300" />

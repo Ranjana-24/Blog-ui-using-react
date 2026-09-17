@@ -59,7 +59,7 @@ export default function EditPage() {
     //     navigate(`/blog/${selectedBlog.id}`);
     // }
 
-     const onSubmit = (data) => {
+  const onSubmit = (data) => {
   const updatedBlog = {
     ...selectedBlog,
     title: data.title,

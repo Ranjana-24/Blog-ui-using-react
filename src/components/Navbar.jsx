@@ -15,7 +15,7 @@ export default function Navbar() {
     </h1>
 
     <Button
-      className="text-black text-4xl sm:hidden"
+      className="text-black text-4xl sm:hidden "
       onClick={() => setMenuOpen(!menuOpen)}
       text={menuOpen ? "Close" : "☰"}
     >
