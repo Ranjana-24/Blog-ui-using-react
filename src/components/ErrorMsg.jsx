@@ -5,7 +5,7 @@ export default function ErrorMsg() {
      const navigate = useNavigate();
     return(
         <>
-     <center className="bg-green-600 rounded-xl mt-50 ml-120 mr-120 py-15 px-30">
+     <center className="bg-gray-600  rounded-xl mt-50 ml-120 mr-120 py-15 px-30">
         <div>
         <TfiFaceSad className="text-white text-5xl font-bold" />
         <h1 className="text-white text-3xl font-bold mt-4">Sorry</h1>

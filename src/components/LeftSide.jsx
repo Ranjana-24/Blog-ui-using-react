@@ -11,7 +11,7 @@ export default function LeftSide() {
   const navigate = useNavigate();
   return (
     
-    <div className="w-full md:w-1/2">
+    <div className="w-full md:w-1/2 bg-white text-black dark:bg-gray-800 dark:text-white ">
       {/* <button className="bg-green-700 rounded-full px-6 py-2 text-white 
   transition-transform duration-200 hover:-translate-y-1 ml-5 mt-5 sm:ml-10 sm:mt-0 md:ml-20"
       onClick={() => navigate("/createnew")}>
@@ -23,7 +23,7 @@ export default function LeftSide() {
         Stories Redefined in
       </h1> */}
       <h1
-        className="font-fraunces  tracking-wide  font-size:24 font-bold tracking-tight text-black 
+        className="font-fraunces  tracking-wide  font-size:24 font-bold tracking-tight 
         text-4xl sm:text-5xl md:text-7xl ml-5 sm:ml-10 md:ml-20 font-serif sm:text-5xl md:text-7xl
   ml-5 sm:ml-10 md:ml-20"
         >
@@ -33,23 +33,26 @@ export default function LeftSide() {
       </h1>
 
 
-      <h1 className="font-fraunces font-serif tracking-wide font-bold font-size:25 tracking-tight text-black 
+      <h1 className="font-fraunces font-serif tracking-wide font-bold font-size:25 
+      tracking-tight bg-white text-black dark:bg-gray-800 dark:text-white 
   text-4xl sm:text-5xl md:text-7xl ml-5 sm:ml-10 md:ml-20"
 
   ><i>Every Read</i></h1>
-      <p className="font-serif text-2xl mt-8 ml-5 sm:ml-10 md:ml-20 text-gray-800 break-words ">
+      <p className="font-serif text-2xl mt-8 ml-5 sm:ml-10 md:ml-20 text-gray-800 break-words
+      bg-white text-gray-800 dark:bg-gray-800 dark:text-gray-300  ">
    Experience ideas, stories, and inspiration curated for every curious mind.
 From insightful articles to captivating stories, every read is crafted to inform, inspire, and leave a lasting impression.
       </p>
 
       <div className="flex font-fraunces text-1xl h-10 flex-wrap items-center gap-2 
-      sm:gap-6 text-black 
+      sm:gap-6 text-black bg-white text-gray-600 dark:bg-gray-800 dark:text-gray-300
       font-bold mt-5 ml-5 sm:ml-10 md:ml-20">
         <p>Fresh Content</p>
         <p>Expert insights</p>
         <p>Inspiring stories</p>
       </div>
-      <div className="flex flex-wrap gap-4 sm:mb-5 sm:gap-6 ml-5 sm:ml-10 md:ml-20 mt-6">
+      <div className="flex flex-wrap gap-4 sm:mb-5 sm:gap-6 ml-5 sm:ml-10 md:ml-20 mt-6
+       bg-white text-gray-600 dark:bg-gray-800 dark:text-gray-300">
         {/* <Button
           text="Begin Reading"
           classname={`bg-green-700 rounded-full px-6 py-2 

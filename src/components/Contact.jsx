@@ -7,8 +7,8 @@ import email from "../assets/email.png";
 export default function Contact() {
   return (
     <>
-    <div className="bg-black
-    text-white px-3 py-2 sm:px-6 sm:py-3 lg:px-10 lg:py-5 
+    <div className="bg-white
+    text-text dark:bg-gray-800 dark:text-white border-b border-gray-600 px-3 py-2 sm:px-6 sm:py-3 lg:px-10 lg:py-5 
     flex flex-col items-center gap-3 sm:flex-row sm:items-center sm:justify-between text-sm">
     
     <div className="flex flex-col items-center gap-2 sm:flex-row sm:gap-4">

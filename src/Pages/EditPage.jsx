@@ -82,7 +82,7 @@ export default function EditPage() {
         return (
         <>
         <Navbar/>
-        <div className="min-h-screen bg-green-100 px-6 py-12 sm:px-3 sm:py-6 ld-px-10 
+        <div className="min-h-screen bg-white text-black dark:bg-gray-800 px-6 py-12 sm:px-3 sm:py-6 ld-px-10 
         lg:py-10">
         <Button
         type="button"
@@ -96,9 +96,10 @@ export default function EditPage() {
       
         <form onSubmit={handleSubmit(onSubmit)}
         className="mx-auto max-w-4xl rounded-2xl border 
-        border-green-900 text-black bg-green-100 p-8 shadow-lg">
+        border-gray-700 bg-green-100 p-8 shadow-lg bg-white text-black dark:bg-gray-800 
+        dark:text-white border border-gray-600">
         <div className="mb-5 ">
-          <label className="mb-2 block font-semibold text-gray-700">
+          <label className="mb-2 block font-semibold text-gray-400">
             Title
           </label>
 
@@ -107,13 +108,14 @@ export default function EditPage() {
             //name="title"
               {...register("title")}
            defaultValue={selectedBlog.title}
-            className="w-full rounded-xl border border-green-900 p-3 outline-none focus:ring-2 focus:ring-green-500"
+            className="w-full rounded-xl border border-gray-600 p-3 outline-none 
+            focus:ring-2"
           />
           {errors.title && <p className="text-red-500 text-xs">{errors.title.message}</p>}
         </div>
 
         <div className="mb-5">
-          <label className="mb-2 block font-semibold text-gray-700">
+          <label className="mb-2 block font-semibold text-gray-400">
             Image URL
           </label>
 
@@ -122,13 +124,13 @@ export default function EditPage() {
             //name="image"
               {...register("image")}
             defaultValue={selectedBlog.image}
-            className="w-full rounded-xl border border-green-900 p-3 outline-none focus:ring-2 focus:ring-green-500"
+            className="w-full rounded-xl border border-gray-600 p-3 outline-none "
           />
            {errors.image && <p className="text-red-500 text-xs">{errors.image.message}</p>}
         </div>
 
         <div className="mb-5">
-          <label className="mb-2 block font-semibold text-gray-700">
+          <label className="mb-2 block font-semibold text-gray-400">
             Content
           </label>
 
@@ -139,13 +141,13 @@ export default function EditPage() {
             placeholder="Write your blog content"
             defaultValue={selectedBlog.content || selectedBlog.body}
             rows="6"
-            className="w-full rounded-xl border border-green-900 p-3 outline-none focus:ring-2 focus:ring-green-500"
+            className="w-full rounded-xl border border-gray-600 p-3 outline-none "
           />
           {errors.content && <p className="text-red-500 text-xs">{errors.content.message}</p>}
         </div>
 
         <div className="mb-5">
-          <label className="mb-2 block font-semibold text-gray-700">
+          <label className="mb-2 block font-semibold text-gray-400">
             Category
           </label>
 
@@ -154,13 +156,13 @@ export default function EditPage() {
             //name="category"
               {...register("category")}
             defaultValue={selectedBlog.category || selectedBlog.tags?.[0]}
-            className="w-full rounded-xl border border-green-900 p-3 outline-none focus:ring-2 focus:ring-green-500"
+            className="w-full rounded-xl border border-gray-600 p-3 outline-none "
           />
           {errors.category && <p className="text-red-500 text-xs">{errors.category.message}</p>}
         </div>
 
         <div className="mb-5">
-          <label className="mb-2 block font-semibold text-gray-700">
+          <label className="mb-2 block font-semibold text-gray-400">
             Date
           </label>
 
@@ -169,13 +171,13 @@ export default function EditPage() {
             //name="date"
             {...register ("date")}
             defaultValue={selectedBlog.date || selectedBlog.createdAt}
-            className="w-full rounded-xl border border-green-900 p-3 outline-none focus:ring-2 focus:ring-green-500"
+            className="w-full rounded-xl border border-gray-700 p-3 outline-none "
           />
           {errors.date && <p className="text-red-500 text-xs">{errors.date.message}</p>}
         </div>
 
         <div className="mb-6">
-          <label className="mb-2 block font-semibold text-gray-700">
+          <label className="mb-2 block font-semibold text-gray-400">
             Author
           </label>
 
@@ -184,7 +186,7 @@ export default function EditPage() {
             //name="author"
             {...register("author")}
             defaultValue = {selectedBlog.author}
-            className="w-full rounded-xl border border-green-900 p-3 outline-none focus:ring-2 focus:ring-green-500"
+            className="w-full rounded-xl border border-gray-700 p-3 outline-none "
           />
           {errors.author && <p className="text-red-500 text-xs">{errors.author.message}</p>}
         </div>

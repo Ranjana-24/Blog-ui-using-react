@@ -54,7 +54,7 @@ export default function BlogDetailedPage() {
 
       <Navbar/>
 
-      <div className="min-h-screen bg-green-100 px-3 sm:px-6 sm:py-8 ">
+      <div className="min-h-screen bg-white text-black dark:bg-gray-800 dark:text-white">
 
         <Link 
           to="/" 
@@ -85,7 +85,7 @@ export default function BlogDetailedPage() {
             </Button>
           </div>
           <div className="mt-2">
-            <p className="text-gray-800 max-w-4xl break-words 
+            <p className="text-gray-800 dark:text-white max-w-4xl break-words 
             w-full ml-3 sm:ml-10 mb-6 font-bold font-serif h-15
             text-3xl sm:text-4xl md:text-5xl ">
               {selectedBlog.title}
@@ -95,13 +95,13 @@ export default function BlogDetailedPage() {
             src={`https://picsum.photos/800/500?random=${selectedBlog.id}`}
             alt="image" 
             className="mb-6 w-full sm:w-full lg:w-220 
-            h-auto sm:h-80 lg:h-90 rounded-xl 
+            h-auto sm:h-80 lg:h-90 rounded-xl border border-gray-400
             lg:ml-10 shadow-lg"
           />
 
           <p 
             className="font-normal ml-3 sm:ml-10
-              max-w-1xl text-green-600 bg-green-200
+              max-w-1xl text-black dark:text-white bg-gray-200 dark:bg-gray-600
               px-3 py-1 rounded-full mt-2 mb-4
               font-serif inline-block"
           >
@@ -111,7 +111,7 @@ export default function BlogDetailedPage() {
           <p 
             className="mb-6 text-lg sm:text-xl font-serif 
             leading-8 ml-3 sm:ml-10 max-w-4xl 
-            text-gray-600"
+            text-gray-400"
           >
             {selectedBlog.content || selectedBlog.body}
           </p>
@@ -119,14 +119,14 @@ export default function BlogDetailedPage() {
    
           <p 
             className="font-normal font-serif leading-7 
-            text-base text-gray-600 ml-3 sm:ml-10 mt-4"
+            text-base text-gray-400 ml-3 sm:ml-10 mt-4"
           >
             • Created At: {selectedBlog.date || selectedBlog.createdAt}
           </p>
 
           <p 
             className="font-normal font-serif leading-7 
-            text-base text-gray-600 ml-3 sm:ml-10 mt-1"
+            text-base text-gray-400 ml-3 sm:ml-10 mt-1"
           >
             • Author: {selectedBlog.author}
           </p>

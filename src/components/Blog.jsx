@@ -9,6 +9,7 @@ import NoPosts from "./NoPosts";
 export default function Blog({ BlogsData, setBlogsData, fetchBlog, loading}) {
   const [selectedBlog, setSelectedBlog] = useState(BlogsData[0]);
   const [currentPage, setCurrentPage] = useState(1);
+  const [searchTerm, setSearchTerm] = useState("");
   
   const postsPerPage = 3;
   const startIndex = (currentPage - 1) * postsPerPage;
@@ -21,10 +22,19 @@ const totalPages = Math.ceil(BlogsData.length / postsPerPage);
 //throw new err ("testing err boundary");
   return (
     <>
-      <hr className="border border-gray-300" />
+      <hr className="border border-gray-600 " />
+     
+          {/* search and filter */}
+        <div className = " text-black dark:bg-gray-800">
+           <button className = "ml-170 text-gray-500">
+             Search
+           </button>
+           <textarea className="w-50 border border-gray-500 rounded h-8 ml-2 mt-3"></textarea>
+        </div>
+
 {loading && BlogsData.length === 0 ? (
   <div className="grid grid-cols-1 gap-1 mt-10 sm:gap-6 md:grid-cols-2
-   lg:grid-cols-3 lg:gap-8">
+   lg:grid-cols-3 lg:gap-8 bg-white text-black dark:bg-gray-800 dark:text-white ">
     {/* {[1, 2, 3].map((item) => ( */}
      {Array(3).fill(null).map((_, index) => (
       <div
@@ -57,7 +67,7 @@ const totalPages = Math.ceil(BlogsData.length / postsPerPage);
       ) : BlogsData.length === 0 && loading === false ? (
            <NoPosts />
       ) : (
-        <div className="min-h-screen bg-green-100 px-3 py-4 xs:px-4 xs:py-6 sm:px-6 
+        <div className="min-h-screen bg-white text-black dark:bg-gray-800 px-3 py-4 xs:px-4 xs:py-6 sm:px-6 
          sm:py-8 md:px-8 lg:px-10 lg:py-10">
         {/* Fetch button */}
         {/* <div className="mb-2 text-center"> */}
@@ -79,8 +89,10 @@ const totalPages = Math.ceil(BlogsData.length / postsPerPage);
             {loading ? "Loading..." : "Fetch Posts"}
           </button> */}
         {/* </div> */}
+
+        {/* cards */}
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-2 
-  lg:grid-cols-3 lg:gap-8">
+  lg:grid-cols-3 lg:gap-8 bg-white text-black dark:bg-gray-800 dark:text-white  ">
           {currentBlogs.map((blog) => (
             <div
               key={blog.id}
@@ -95,10 +107,11 @@ const totalPages = Math.ceil(BlogsData.length / postsPerPage);
 
               <div className="p-4 sm:p-5 md:p-6">
                 <h1 className="mb-3 text-xl font-bold text-gray-900 sm:mb-4 sm:text-2xl">
-                  Title: {blog.title}
+                  {blog.title}
                 </h1>
 
-                <p className="mb-2 inline-block rounded-full bg-green-100 px-3 py-1 text-sm font-medium text-green-700">
+                <p className="mb-2 inline-block rounded-full bg-gray-200 px-3 py-1 
+                text-sm font-medium text-gray-700">
                   {/* category: {blog.tags[0]} */}
                   {blog.category || blog.tags?.[0]}
                 </p>
