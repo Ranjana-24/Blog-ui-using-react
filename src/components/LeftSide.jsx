@@ -23,8 +23,9 @@ export default function LeftSide() {
         Stories Redefined in
       </h1> */}
       <h1
-        className="font-fraunces  tracking-wide h-20 font-size:24 font-bold tracking-tight text-black 
-        text-4xl sm:text-5xl md:text-7xl ml-5 sm:ml-10 md:ml-20 font-serif"
+        className="font-fraunces  tracking-wide  font-size:24 font-bold tracking-tight text-black 
+        text-4xl sm:text-5xl md:text-7xl ml-5 sm:ml-10 md:ml-20 font-serif sm:text-5xl md:text-7xl
+  ml-5 sm:ml-10 md:ml-20"
         >
         <i>
         Stories Redefined in

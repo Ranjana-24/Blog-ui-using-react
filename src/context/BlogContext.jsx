@@ -43,9 +43,9 @@ const authors = ["John", "Sarah", "David", "Emma", "Alex"];
 };
 
 
-// useEffect(() => {
-//   fetchBlog();
-// }, []);
+useEffect(() => {
+  fetchBlog();
+}, []);
   return (
     <BlogContext.Provider
       value={{

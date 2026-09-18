@@ -73,6 +73,7 @@ function AppContent(){
   return (
     <Router>
       <ErrorBoundary>
+        <useScrollToTop />
       <AppContent/>
       </ErrorBoundary>
       <ScrollToTopButton />
